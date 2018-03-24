@@ -1,6 +1,4 @@
 .idea/
 Common/lib
-Worker/lib
-Worker/src/training
 out/
 avivor.pem
