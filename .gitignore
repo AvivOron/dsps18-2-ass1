@@ -1,4 +1,6 @@
 .idea/
 Common/lib
-Worker/lin
+Worker/lib
+Worker/src/training
 out/
+avivor.pem
