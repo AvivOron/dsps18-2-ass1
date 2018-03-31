@@ -43,15 +43,15 @@ public class Manager {
                     }
                 }
 
-                //AmazonEC2Exception: You have requested more instances (6) than your current instance limit of 5 allows for the specified instance type
-                double numOfWorkers = Math.ceil((double)lines.size()/imagesPerWorker);
-                if(numOfWorkers > 4){
-                    System.out.println(String.format("Cant create %d workers (max=4). Creating 4 Workers...\n", numOfWorkers));
+                //AmazonEC2Exception: You have requested more instances (21) than your current instance limit of 20 allows for the specified instance type
+                int numOfWorkers = (int) Math.ceil((double)lines.size()/imagesPerWorker);
+                if(numOfWorkers > 19){
+                    System.out.println(String.format("Cant create %d workers (max=19). Creating 19 Workers...\n", numOfWorkers));
                 }
 
                 //Create (num_of_links)/(images_per_worker) worker nodes
                 List<String> workersIds = new ArrayList<>();
-                for(int i=0; i<Math.min(numOfWorkers, 4); i++){
+                for(int i=0; i<Math.min(numOfWorkers, 19); i++){
                     String workerInstanceID = ec2.setNewMachine("Worker", inputQueue, outputQueue, imagesPerWorker);
                     workersIds.add(workerInstanceID);
                 }
@@ -98,7 +98,7 @@ public class Manager {
                 for (Map.Entry<String, String> entry : hm.entrySet()) {
                     String imageUrl = entry.getKey();
                     String text = entry.getValue();
-                    fw.write(String.format("<img src='%s'/>\n<br>\n", imageUrl));
+                    fw.write(String.format("<img src='%s'/ style='max-width: 600px;'>\n<br>\n", imageUrl));
                     fw.write(String.format("%s\n<br><br>\n", text));
                 }
 

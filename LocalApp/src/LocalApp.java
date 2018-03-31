@@ -50,7 +50,7 @@ public class LocalApp {
                 break;
             }
             else{
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.SECONDS.sleep(15);
             }
         }
 
